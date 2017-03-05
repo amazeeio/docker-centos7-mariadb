@@ -1,0 +1,5 @@
+version: '2'
+services:
+  mariadb:
+    build: .
+    user: '111111112'
