@@ -24,6 +24,10 @@ RUN yum install -y epel-release && \
     fix-permissions /var/log/ && \
     fix-permissions /etc/my.cnf.d/
 
+### we cannot start mysql as root, we add the user mysql to the group root and change the user of the Docker Image to this user
+RUN usermod -G 0 --append mysql
+USER mysql
+
 ENV MYSQL_RANDOM_ROOT_PASSWORD=true \
     MYSQL_DATABASE=amazeeio \
     MYSQL_USER=amazeeio \
